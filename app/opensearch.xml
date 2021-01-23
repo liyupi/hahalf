@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<OpenSearchDescription xmlns="http://a9.com/-/spec/opensearch/1.1/">
+  <ShortName>HAHALF</ShortName>
+  <Description>Search HAHALF</Description>
+  <InputEncoding>UTF-8</InputEncoding>
+  <LongName>HAHALF Search</LongName>
+  <Image type="./images/codelf_logo.png">logo</Image>
+  <Url type="text/html" method="get" template="https://github.com/liyupi/hahalf/#{searchTerms}"/>
+</OpenSearchDescription>
