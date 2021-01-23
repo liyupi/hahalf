@@ -7,6 +7,8 @@ HAHALF(表情包搜索神器)
 
 致敬 unbug 大神的 [CODELF（变量命名神器）](https://github.com/unbug/codelf)，站在巨人的肩膀上，我开发了表情包搜索神器，一键搜索全网表情包！
 
+在线体验：https://haha.liyupi.com
+
 目前项目刚刚起步，仅完成了从单一接口搜索图片，保留了大部分原 CODELF 项目代码。
 
 下一目标：
