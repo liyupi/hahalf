@@ -1,32 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Dropdown, Icon, Input } from 'semantic-ui-react';
-
-// http://githut.info/
-const topProgramLan = [
-  { id: '22,106', language: 'JavaScript, CoffeeScript' },
-  { id: '133,135', language: 'CSS' },
-  { id: '3,39', language: 'HTML' },
-  { id: 137, language: 'Swift' },
-  { id: 35, language: 'Objective-C' },
-  { id: 23, language: 'Java' },
-  { id: 19, language: 'Python' },
-  { id: 24, language: 'PHP' },
-  { id: 32, language: 'Ruby' },
-  { id: 28, language: 'C' },
-  { id: 16, language: 'C++' },
-  { id: 6, language: 'C#' },
-  { id: 55, language: 'Go' },
-  { id: 51, language: 'Perl' },
-  { id: '104,109', language: 'Clojure, ClojureScript' },
-  { id: 40, language: 'Haskell' },
-  { id: 54, language: 'Lua' },
-  { id: 20, language: 'Matlab' },
-  { id: 144, language: 'R' },
-  { id: 47, language: 'Scala' },
-  { id: '69,78,146', language: 'Shell' },
-  { id: 29, language: 'Lisp' },
-  { id: 42, language: 'ActionScript' }
-];
+import { Icon, Input } from 'semantic-ui-react';
 
 export default function SearchBar(props) {
   const inputEl = useRef(null);
@@ -48,33 +21,6 @@ export default function SearchBar(props) {
     updateState({ valChanged: false });
   }
 
-  function handleRestLang() {
-    updateState({ lang: [], valChanged: true });
-  }
-
-  function handleSelectLang(id) {
-    updateState({ lang: state.lang.concat(id).sort(), valChanged: true });
-  }
-
-  function handleDeselectLang(id) {
-    let lang = state.lang;
-    lang.splice(state.lang.indexOf(id), 1);
-    updateState({ lang: lang.sort(), valChanged: true });
-  }
-
-  function handleToggleSelectLang(id) {
-    state.lang.indexOf(id) === -1 ? handleSelectLang(id) : handleDeselectLang(id);
-  }
-
-  const langItems = topProgramLan.map(key => {
-    const active = state.lang.indexOf(key.id) !== -1;
-    return <Dropdown.Item key={key.id}
-      active={active}
-      onClick={() => handleToggleSelectLang(key.id)}>
-      <Icon name={active ? 'check circle outline' : 'circle outline'} />{key.language}
-    </Dropdown.Item>;
-  });
-
   return (
     <div className='search-bar'>
       <div className='search-bar__desc' style={{marginBottom: 10}}>
@@ -85,15 +31,6 @@ export default function SearchBar(props) {
           onChange={() => updateState({ valChanged: true })}
           className='search-bar__input'
           icon fluid placeholder={props.placeholder} size={inputSize}>
-          <Dropdown floating text='' icon='filter' className='search-bar__dropdown'>
-            <Dropdown.Menu>
-              <Dropdown.Item icon='undo' text='All 90 Languages (Reset)' onClick={handleRestLang} />
-              <Dropdown.Menu scrolling className='fix-dropdown-menu'>
-                {langItems}
-              </Dropdown.Menu>
-            </Dropdown.Menu>
-          </Dropdown>
-
           <input type='search' name='search' defaultValue={props.searchValue} list='search-data-list'
             onKeyPress={e => {
               e.key === 'Enter' && handleSearch()
